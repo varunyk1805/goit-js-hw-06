@@ -1,7 +1,8 @@
 const loginForm = document.querySelector('.login-form');
 
-loginForm.addEventListener('submit', (event) => {
+const validationInputData = event => {
     event.preventDefault();
+    
     const {
         elements: { email, password }
     } = event.currentTarget;
@@ -14,14 +15,15 @@ loginForm.addEventListener('submit', (event) => {
     userData.email = email.value;
     userData.password = password.value;
 
-    if (email.value.includes(' ') || password.value.includes(' ')) {
-        alert('Введені дані не повинні містити пробіли')
-    }
-    else if (email.value.length !== 0 && password.value.length !== 0) {
+    if (email.value.length === 0 || password.value.length === 0) {
+        alert('Всі поля форми повинні бути заповнені')
+    } else if (email.value.includes(' ') || password.value.includes(' ')) {
+        alert('Введені дані не повинні містити пробіли');
+    } else {
         console.log(userData);
         email.value = '';
         password.value = '';
-    } else {
-        alert('Всі поля форми повинні бути заповнені');
     }
-})
+}
+
+loginForm.addEventListener('submit', validationInputData)
