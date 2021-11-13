@@ -9,14 +9,14 @@ const validationInputData = event => {
     
     const userData = {
         email,
-        password 
-    }
+        password
+    };
 
     userData.email = email.value;
     userData.password = password.value;
 
     if (email.value.length === 0 || password.value.length === 0) {
-        alert('Всі поля форми повинні бути заповнені')
+        alert('Всі поля форми повинні бути заповнені');
     } else if (email.value.includes(' ') || password.value.includes(' ')) {
         alert('Введені дані не повинні містити пробіли');
     } else {
@@ -24,6 +24,6 @@ const validationInputData = event => {
         email.value = '';
         password.value = '';
     }
-}
+};
 
-loginForm.addEventListener('submit', validationInputData)
+loginForm.addEventListener('submit', validationInputData);
