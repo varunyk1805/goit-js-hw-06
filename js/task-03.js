@@ -19,8 +19,10 @@ gallery.style.display = 'flex';
 gallery.style.justifyContent = 'space-around';
 
 const elementsOfGallery = images.map(image =>
-  `<li class="gallery__item" style='width:30%; height:150px' > <img src="${image.url}" alt="${image.alt}" style='display:block; height:100%; width:100%; object-fit:cover'/> </li>`)
-  .join('');
+  `<li class="gallery__item" style='width:30%; height:150px'>
+    <img src="${image.url}" alt="${image.alt}" style='display:block; height:100%; width:100%; object-fit:cover'/>
+  </li>`)
+    .join('');
 
 gallery.insertAdjacentHTML("afterbegin", elementsOfGallery);
 
