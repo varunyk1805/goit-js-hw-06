@@ -1,6 +1,4 @@
-function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-}
+const getRandomHexColor = () => `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 
 const createBtn = document.querySelector('button[data-create]');
 const destroyBtn = document.querySelector('button[data-destroy]');
@@ -10,23 +8,24 @@ const boxes = [];
 
 let numberDiv = 0;
 
-const amount = (event) => numberDiv = event.currentTarget.value;
+const amount = event => numberDiv = Number(event.currentTarget.value);
 
 inputNumber.addEventListener('blur', amount);
 
 const createBoxes = () => {
-  const minI = boxes.length;
-  const maxI = boxes.length + Number(numberDiv);
-  box.innerHTML = ''; 
-  for (let i = minI; i < maxI; i += 1) {
+  const numberOldBoxes = boxes.length;
+  const numberNewBoxes = boxes.length + numberDiv;
+  for (let i = numberOldBoxes; i < numberNewBoxes; i += 1) {
     let widthBox = 30 + i * 10;
     let heightBox = 30 + i * 10;
     boxes.push(
-      `<div style="width:${widthBox}px; height:${heightBox}px; background-color:${getRandomHexColor()}"></div>`);
-  }
+      `<div style="width:${widthBox}px; height:${heightBox}px; background-color:${getRandomHexColor()}"></div>`
+    );
+  };
 
-  console.log(boxes);
-  box.insertAdjacentHTML('beforeend', boxes.join(''));
+  const newBoxes = boxes.slice(numberOldBoxes);
+
+  box.insertAdjacentHTML('beforeend', newBoxes.join(''));
 };
 
 createBtn.addEventListener('click', createBoxes);
